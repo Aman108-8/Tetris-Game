@@ -74,6 +74,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
 	// score
     private int score = 0;
+    private int heightScore = 0;
 
     public Board() {
 
@@ -198,8 +199,11 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
         g.setFont(new Font("Georgia", Font.BOLD, 20));
 
-        g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
-        g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
+        g.drawString("SCORE", WindowGame.WIDTH - 125, (WindowGame.HEIGHT / 2)-100);
+        g.drawString(score + "", WindowGame.WIDTH - 125, (WindowGame.HEIGHT / 2) - 70);
+        
+        g.drawString("Best", WindowGame.WIDTH - 125, (WindowGame.HEIGHT / 2));
+        g.drawString(heightScore + "", WindowGame.WIDTH - 125, (WindowGame.HEIGHT / 2) +30);
 
         g.setColor(Color.WHITE);
 
@@ -338,6 +342,13 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
     public void addScore() {
         score++;
+        BestScore();
+    }
+    
+    public void BestScore() {
+        if(score>heightScore){
+            heightScore = score;
+        }
     }
 
 }
